@@ -1,23 +1,20 @@
 
 
-#initialize players with blankscores
-player_1_score = 0
-player_2_score = 0
 
 #Loop that controls game - back and forther between players stops when winner is made
 
 #player selection
-print "Player one, please select: Rock, Paper, or Scissors "
+print "\nPlayer one, please select: Rock, Paper, or Scissors. >"
 player_one_selection = gets.chomp.downcase
-while player_one_selection != "rock" || player_one_selection != "paper" || player_one_selection != "scissors"
-  puts "'#{player_one_selection}' is not a valid option. \n\nPlease select: Rock, Paper, or Scissors."
+while player_one_selection != "rock" && player_one_selection != "paper" && player_one_selection != "scissors"
+  puts "'#{player_one_selection}' is not a valid option. \n\nPlease select: 'r' for Rock, 'p' for Paper, or 's' for Scissors. >"
   player_one_selection = gets.chomp.downcase
 end
 
-print "Player two, please select: Rock, Paper, or Scissors "
-player_one_selection = gets.chomp.downcase
-while player_two_selection != "rock" || player_two_selection != "paper" || player_two_selection != "scissors"
-  puts "'#{player_two_selection}' is not a valid option. \n\nPlease select: Rock, Paper, or Scissors."
+print "\nPlayer two, please select: Rock, Paper, or Scissors. >"
+player_two_selection = gets.chomp.downcase
+while player_two_selection != "rock" && player_two_selection != "paper" && player_two_selection != "scissors"
+  puts "'#{player_two_selection}' is not a valid option. \n\nPlease select: 'r' for Rock, 'p' for Paper, or 's' for Scissors. >"
   player_two_selection = gets.chomp.downcase
 end
 
@@ -35,6 +32,8 @@ elsif player_two_selection == "rock" && player_one_selection == "scissors" ||
 else
   puts "Something strange happened here"
 end
+
+puts outcome
 #winner of round - may be part of the method above
 
 
