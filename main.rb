@@ -10,7 +10,8 @@ def player_select_choice
   acceptable_choices.each { |e| puts e}
   player_choice = gets.chomp.downcase
   while !acceptable_choices.include? player_choice
-    puts "\n\n'#{player_choice}' is not a valid option. Please select one of the following: #{acceptable_choices.each { |e| print e}}"
+    puts "\n\n'#{player_choice}' is not a valid option. Please select one of the following:"
+    acceptable_choices.each { |e| puts e}
     player_choice = gets.chomp.downcase
   end
   player_choice
