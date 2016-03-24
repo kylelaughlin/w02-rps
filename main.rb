@@ -1,9 +1,24 @@
-
+require 'pry'
 
 
 #Loop that controls game - back and forther between players stops when winner is made
 
 #player selection
+
+def player_selection
+  acceptable_choices = ['rock', 'paper', 'scissors']
+  puts "Please select one of the following:"
+  acceptable_choices.each { |e| puts e}
+  player_choice = gets.chomp.downcase
+  while !acceptable_choices.include? player_choice
+    puts "\n\n'#{player_choice}' is not a valid option. Please select one of the following: #{acceptable_choices.each { |e| print e}}"
+    player_choice = gets.chomp.downcase
+  end
+  player_choice
+end
+
+binding.pry
+
 print "\nPlayer one, please select: Rock, Paper, or Scissors. >"
 player_one_selection = gets.chomp.downcase
 while player_one_selection != "rock" && player_one_selection != "paper" && player_one_selection != "scissors"
@@ -34,6 +49,8 @@ else
 end
 
 puts outcome
+
+
 #winner of round - may be part of the method above
 
 
@@ -42,23 +59,7 @@ puts outcome
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+=begin
 puts "Lets Play Rock Paper Scissors. First player to two wins, wins!"
 score_1 = 0
 score_2 = 0
@@ -122,3 +123,4 @@ if score_1 > score_2
 else
     puts "Player 2 Wins!"
 end
+=end
