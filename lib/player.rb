@@ -25,7 +25,8 @@ class Player
   end
 
   # Checks the validity of the players choice
-
+  #
+  # 
   def input_validity(player_choice, acceptable_choices)
     while !acceptable_choices.include? player_choice
       puts "\n\n'#{player_choice}' is not a valid option."

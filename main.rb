@@ -1,21 +1,5 @@
 require 'pry'
-
-
-# Prompt user for a selection
-#
-# Returns the players selection
-def player_select_choice
-  acceptable_choices = ['rock', 'paper', 'scissors']
-  puts "Please select one of the following:"
-  acceptable_choices.each { |e| puts e}
-  player_choice = gets.chomp.downcase
-  while !acceptable_choices.include? player_choice
-    puts "\n\n'#{player_choice}' is not a valid option. Please select one of the following:"
-    acceptable_choices.each { |e| puts e}
-    player_choice = gets.chomp.downcase
-  end
-  player_choice
-end
+require_relative './lib/player.rb'
 
 # Compares player selections to deterimine a rps winner
 #
@@ -40,9 +24,18 @@ def compare_player_selections(player_one_selection, player_two_selection)
   outcome
 end
 
-player_one_selection = player_select_choice
+print "Player 1's name: "
+name1 = gets.chomp
+player_one = Player.new(name: name1)
 
-player_two_selection = player_select_choice
+print "\n\nPlayer 2's name: "
+name2 = gets.chomp
+player_two = Player.new(name: name2)
+
+acceptable_choices = ['rock', 'paper', 'scissors']
+
+player_one_selection = player_one.player_select_choice(acceptable_choices)
+player_two_selection = player_two.player_select_choice(acceptable_choices)
 
 outcome = compare_player_selections(player_one_selection, player_two_selection)
 puts outcome

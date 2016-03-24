@@ -39,4 +39,10 @@ class PlayerTest < Minitest::Test
     result = player.input_validity('rock',['rock','paper','scissors'])
     assert_equal('rock', result)
   end
+
+  def test_input_validity_fail
+    player = Player.new(name: "Kyle")
+    result = player.input_validity('hand',['rock','paper','scissors'])
+    refute_equal('hand', result)
+  end
 end
