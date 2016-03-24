@@ -20,4 +20,18 @@ class PlayerTest < Minitest::Test
     assert_equal("Fred", player.name)
   end
 
+  def test_move_getter_and_setter
+    player = Player.new(name: "Kyle")
+    assert_nil(player.move)
+    player.move = "rock"
+    assert_equal("rock", player.move)
+  end
+
+  def test_wins_getter_and_setter
+    player = Player.new(name: "Kyle")
+    assert_nil(player.wins)
+    player.wins = 5
+    assert_equal(5, player.wins)
+  end
+  
 end

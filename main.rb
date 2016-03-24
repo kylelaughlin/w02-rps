@@ -44,4 +44,5 @@ player_one_selection = player_select_choice
 
 player_two_selection = player_select_choice
 
-compare_player_selections(player_one_selection, player_two_selection)
+outcome = compare_player_selections(player_one_selection, player_two_selection)
+puts outcome
