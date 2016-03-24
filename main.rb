@@ -5,7 +5,7 @@ require 'pry'
 
 #player selection
 
-def player_selection
+def player_select_choice
   acceptable_choices = ['rock', 'paper', 'scissors']
   puts "Please select one of the following:"
   acceptable_choices.each { |e| puts e}
@@ -17,39 +17,29 @@ def player_selection
   player_choice
 end
 
-binding.pry
-
-print "\nPlayer one, please select: Rock, Paper, or Scissors. >"
-player_one_selection = gets.chomp.downcase
-while player_one_selection != "rock" && player_one_selection != "paper" && player_one_selection != "scissors"
-  puts "'#{player_one_selection}' is not a valid option. \n\nPlease select: 'r' for Rock, 'p' for Paper, or 's' for Scissors. >"
-  player_one_selection = gets.chomp.downcase
-end
-
-print "\nPlayer two, please select: Rock, Paper, or Scissors. >"
-player_two_selection = gets.chomp.downcase
-while player_two_selection != "rock" && player_two_selection != "paper" && player_two_selection != "scissors"
-  puts "'#{player_two_selection}' is not a valid option. \n\nPlease select: 'r' for Rock, 'p' for Paper, or 's' for Scissors. >"
-  player_two_selection = gets.chomp.downcase
-end
-
 #selection comparison
-if player_one_selection == player_two_selection
-  outcome = "tie"
-elsif player_one_selection == "rock" && player_two_selection == "scissors" ||
-      player_one_selection == "paper" && player_two_selection == "rock" ||
-      player_one_selection == "scissors" && player_two_selection == "paper"
-  outcome = "player one wins"
-elsif player_two_selection == "rock" && player_one_selection == "scissors" ||
-      player_two_selection == "paper" && player_one_selection == "rock" ||
-      player_two_selection == "scissors" && player_one_selection == "paper"
-  outcome = "player two wins"
-else
-  puts "Something strange happened here"
+def compare_player_selections(player_one_selection, player_two_selection)
+  if player_one_selection == player_two_selection
+    outcome = "tie"
+  elsif player_one_selection == "rock" && player_two_selection == "scissors" ||
+    player_one_selection == "paper" && player_two_selection == "rock" ||
+    player_one_selection == "scissors" && player_two_selection == "paper"
+    outcome = "player one wins"
+  elsif player_two_selection == "rock" && player_one_selection == "scissors" ||
+    player_two_selection == "paper" && player_one_selection == "rock" ||
+    player_two_selection == "scissors" && player_one_selection == "paper"
+    outcome = "player two wins"
+  else
+    puts "Something strange happened here"
+  end
+  outcome
 end
 
-puts outcome
+player_one_selection = player_select_choice
 
+player_two_selection = player_select_choice
+
+compare_player_selections(player_one_selection, player_two_selection)
 
 #winner of round - may be part of the method above
 
