@@ -1,5 +1,7 @@
 require 'pry'
 require_relative './lib/player.rb'
+require_relative './lib/game.rb'
+require_relative './lib/rps_rules.rb'
 
 puts "\n\nWELCOME TO ROCK PAPER SCISSORS!\n\n"
 
@@ -12,7 +14,7 @@ player_two_name = gets.chomp
 player_two = Player.new(name: player_two_name)
 
 #Establish the rule object - - later have selection for the type of game
-rule_set = RPSRules.new(player_one, player_two)
+rule_set = RPSRules.new(player_one: player_one, player_two: player_two)
 #Create a game - - for now default is rps
 game = Game.new(rule_set: rule_set, player_one: player_one, player_two: player_two)
 
