@@ -21,9 +21,12 @@ class Game
       #Report the status of wins for each players progress
     #best_of = select_how_many_rounds
     #rounds = rounds_to_win
-    p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
-    p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
-    @rule_set.run_a_round(p1_move, p2_move)
+    rounds = rounds_to_win
+    while @player_one.wins < rounds && @player_two.wins < rounds
+      p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
+      p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
+      @rule_set.run_a_round(p1_move, p2_move)
+    end
     #while player_one.wins < rounds && player_two.wins < rounds
       #rule_set.run_a_round()
     #end
@@ -77,9 +80,6 @@ class Game
   def calculate_rounds_to_win(input)
     input - (input / 2)
   end
-
-
-
 
 end
 binding.pry
