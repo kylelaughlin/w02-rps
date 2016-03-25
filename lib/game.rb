@@ -26,6 +26,7 @@ class Game
       p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
       p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
       @rule_set.run_a_round(p1_move, p2_move)
+      report_end_of_round
     end
     #while player_one.wins < rounds && player_two.wins < rounds
       #rule_set.run_a_round()
@@ -34,6 +35,12 @@ class Game
     #report the winner
 
   end
+
+  #
+  def report_end_of_round
+    puts "\n\nPlayer 1 has won #{@player_one.wins}\nPlayer 2 has won #{player_two.wins}"
+  end
+
 
   def
 
