@@ -1,6 +1,9 @@
 require 'pry'
 require_relative './lib/player.rb'
 
+
+
+=begin
 # Compares player selections to deterimine a rps winner
 #
 # +player_one_selection: a string representing the players selection of rock, paper or scissors
@@ -68,5 +71,5 @@ while player_one.wins < num_of_rounds && player_two.wins < num_of_rounds
 end
 
 puts "\n\n#{outcome}"
-
+=end
 binding.pry
