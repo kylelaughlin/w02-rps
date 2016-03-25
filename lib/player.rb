@@ -24,9 +24,13 @@ class Player
     player_choice = input_validity(player_choice, acceptable_choices)
   end
 
-  # Checks the validity of the players choice
+  # Checks the validity of the players choice against the acceptable_choices array
   #
-  # 
+  # +player_choice: a string representing the input provided by the player for their turn
+  # +acceptable_choices: an array representing the valid options for a players
+  # =>  to select from
+  #
+  # Returns a string representing the validated player selection
   def input_validity(player_choice, acceptable_choices)
     while !acceptable_choices.include? player_choice
       puts "\n\n'#{player_choice}' is not a valid option."
