@@ -105,4 +105,14 @@ class GameTest < Minitest::Test
     refute(result, "Should be invalid, 6 is an invalid number of rounds to play")
   end
 
+  def test_calculate_rounds_to_win
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    game = Game.new(rule_set: rps_rules, player_one: player1, player_two: player2)
+    result = game.calculate_rounds_to_win(7)
+    assert_equal(4,result)
+  end
+
+
 end

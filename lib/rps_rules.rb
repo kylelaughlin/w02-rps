@@ -9,9 +9,6 @@ class RPSRules
     @acceptable_choices = ['rock', 'paper', 'scissors']
   end
 
-
-
-
   # Compares player selections to deterimine a rps winner
   #
   # +player_one_selection: a string representing the players selection of rock, paper or scissors
