@@ -34,7 +34,7 @@ print "\n\nPlayer 2's name: "
 name2 = gets.chomp
 player_two = Player.new(name: name2)
 
-print "\n\nPlay to the best of how many rounds?\n\n1. 2 out of 3\n2. 3 out of 5\n 3. 4 our of 7"
+print "\n\nPlay to the best of how many rounds?\n\n1. 1 round\n2. 2 out of 3\n3. 3 out of 5\n 4. 4 our of 7"
 print "\nPlease select a number: "
 rounds_selected = gets.chomp.to_i
 while rounds_selected != 1 && rounds_selected != 2 && rounds_selected != 3
@@ -42,21 +42,25 @@ while rounds_selected != 1 && rounds_selected != 2 && rounds_selected != 3
   rounds_selected  = gets.chomp.to_i
 end
 
-rounds = nil
+num_of_rounds = nil
 if rounds_selected == 1
-  rounds = 2
+  num _of_rounds = 1
 elsif rounds_selected  == 2
-  rounds = 3
+  num_of_rounds = 2
 elsif rounds_selected == 3
-  rounds = 4
+  num_of_rounds = 3
+elsif rounds_selected == 4
+  num_of_rounds = 4
 else
   puts "Something weird happened here."
 end
 
 
+
 acceptable_choices = ['rock', 'paper', 'scissors']
 
-while player_one.wins < rounds && player_two.wins < rounds
+
+while player_one.wins < num_of_rounds && player_two.wins < num_of_rounds
   player_one_selection = player_one.player_select_choice(acceptable_choices)
   player_two_selection = player_two.player_select_choice(acceptable_choices)
 
@@ -64,3 +68,5 @@ while player_one.wins < rounds && player_two.wins < rounds
 end
 
 puts "\n\n#{outcome}"
+
+binding.pry

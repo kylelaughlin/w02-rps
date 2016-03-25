@@ -4,13 +4,17 @@ class Player
 
   attr_accessor :name, :move, :wins
 
+  # Constructs the initial state of the Player object
+  #
+  # +name: a string representing the name of the player
+  # @move and @wins instance variables
   def initialize(name:)
     @name = name
     @move  = nil
     @wins = 0
   end
 
-  acceptable_choices = ['rock', 'paper', 'scissors']
+  #acceptable_choices = ['rock', 'paper', 'scissors']
 
   # Prompts the user for their choice for a round
   #
@@ -18,8 +22,9 @@ class Player
   #
   # Returns a string representing the choice the player has made
   def player_select_choice(acceptable_choices)
-    puts "Please select one of the following:"
+    puts "Please select one of the following:\n"
     acceptable_choices.each { |e| puts e}
+    puts ""
     player_choice = gets.chomp.downcase
     player_choice = input_validity(player_choice, acceptable_choices)
   end
@@ -33,16 +38,17 @@ class Player
   # Returns a string representing the validated player selection
   def input_validity(player_choice, acceptable_choices)
     while !acceptable_choices.include? player_choice
-      puts "\n\n'#{player_choice}' is not a valid option."
+      puts "\n\n'#{player_choice}' is not a valid option.\n"
       player_select_choice(acceptable_choices)
     end
     player_choice
   end
 
+  # Increases @wins by one
+  #
+  # Returns the new value of @wins
   def wins_round
     @wins += 1
   end
 
 end
-
-binding.pry
