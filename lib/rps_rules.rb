@@ -3,6 +3,9 @@ require_relative 'player.rb'
 
 class RPSRules
 
+  attr_reader :acceptable_choices
+  attr_accessor :player_one, :player_two
+
   def initialize(player_one:, player_two:)
     @player_one = player_one
     @player_two = player_two
@@ -17,16 +20,16 @@ class RPSRules
   # Returns a string representing which player wins the round according to the rps rules
   def run_a_round(player_one_selection, player_two_selection)
     if player_one_selection == player_two_selection
-      outcome = "Tie"
+      outcome = "This round was a tie"
     elsif player_one_selection == "rock" && player_two_selection == "scissors" ||
       player_one_selection == "paper" && player_two_selection == "rock" ||
       player_one_selection == "scissors" && player_two_selection == "paper"
-      outcome = "Player one wins"
+      outcome = "Player one won this round!"
       @player_one.wins_round
     elsif player_two_selection == "rock" && player_one_selection == "scissors" ||
       player_two_selection == "paper" && player_one_selection == "rock" ||
       player_two_selection == "scissors" && player_one_selection == "paper"
-      outcome = "Player two wins"
+      outcome = "Player two won this round!"
       @player_two.wins_round
     else
       puts "Something strange happened here"

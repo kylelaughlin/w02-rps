@@ -30,7 +30,7 @@ class Player
     acceptable_choices.each { |e| puts e}
     puts ""
     player_choice = player_input
-    player_choice = input_validity(player_choice, acceptable_choices)
+    @move = input_validity(player_choice, acceptable_choices)
   end
 
   # Checks the validity of the players choice against the acceptable_choices array

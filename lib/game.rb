@@ -1,6 +1,7 @@
 require 'pry'
 require_relative 'rps_rules.rb'
 
+
 class Game
 
   attr_accessor :rule_set, :player_one, :player_two
@@ -19,16 +20,19 @@ class Game
       #loop the calls of the rules until a player has enough wins to break the loop
       #Report the status of wins for each players progress
     #best_of = select_how_many_rounds
-    rounds = rounds_to_win
-    while player_one.wins < rounds && player_two.wins < rounds
-      rule_set.run_a_round
-    end
+    #rounds = rounds_to_win
+    p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
+    p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
+    @rule_set.run_a_round(p1_move, p2_move)
+    #while player_one.wins < rounds && player_two.wins < rounds
+      #rule_set.run_a_round()
+    #end
 
     #report the winner
 
   end
 
-
+  def
 
   def rounds_to_win
     input = get_num_of_rounds_from_user

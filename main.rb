@@ -18,7 +18,7 @@ rule_set = RPSRules.new(player_one: player_one, player_two: player_two)
 #Create a game - - for now default is rps
 game = Game.new(rule_set: rule_set, player_one: player_one, player_two: player_two)
 
-game.play
+#game.play
 
 
 =begin
