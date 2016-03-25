@@ -69,4 +69,40 @@ class GameTest < Minitest::Test
     assert_equal(player3, game.player_two)
   end
 
+  def test_valid_num_of_rounds_from_user
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    game = Game.new(rule_set: rps_rules, player_one: player1, player_two: player2)
+    result = game.validate_num_of_rounds_from_user(3)
+    assert(result, "Should be valid, 3 is a valid number of rounds to play")
+  end
+
+  def test_invalid_num_of_rounds_from_user
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    game = Game.new(rule_set: rps_rules, player_one: player1, player_two: player2)
+    result = game.validate_num_of_rounds_from_user(0)
+    refute(result, "Should be invalid, 0 is an invalid number of rounds to play")
+  end
+
+  def test_valid_one_rounds_from_user
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    game = Game.new(rule_set: rps_rules, player_one: player1, player_two: player2)
+    result = game.validate_num_of_rounds_from_user(1)
+    assert(result, "Should be valid, 1 is a valid number of rounds to play")
+  end
+
+  def test_invalid_num_of_rounds_from_user_even
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    game = Game.new(rule_set: rps_rules, player_one: player1, player_two: player2)
+    result = game.validate_num_of_rounds_from_user(6)
+    refute(result, "Should be invalid, 6 is an invalid number of rounds to play")
+  end
+
 end
