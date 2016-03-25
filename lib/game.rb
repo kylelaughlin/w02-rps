@@ -34,6 +34,9 @@ class Game
 
   def
 
+  # Finds how many rounds a player needs to win to win the select
+  #
+  # Returns an integer that represents how many rounds are needed to win
   def rounds_to_win
     input = get_num_of_rounds_from_user
     valid = validate_num_of_rounds_from_user(input)
@@ -47,15 +50,30 @@ class Game
     calculate = calculate_rounds_to_win(input)
   end
 
+  # Gets input from the user in the form of an integer
+  #
+  # Returns an integer representing the users input
   def get_num_of_rounds_from_user
     puts "To the best of how many rounds do you want to play?"
     gets.chomp.to_i
   end
 
+  # Checks if an integer is greater than zero and is odd
+  #
+  # +best_of: an integer representing the best of n rounds to play
+  #
+  # Returns true if the integer meets the criteria and false if not
   def validate_num_of_rounds_from_user(best_of)
     best_of >= 1 && best_of % 2 != 0
   end
 
+  # Calculates how many rounds a player needs to win to win a best of n game
+  #
+  # +input: an integer represenging the users input of how many rounds in a best
+  # => of n match
+  #
+  # Returns an integer representing how many rounds a player needs to win to
+  # => win the match.
   def calculate_rounds_to_win(input)
     input - (input / 2)
   end
