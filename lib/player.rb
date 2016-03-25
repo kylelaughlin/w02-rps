@@ -14,6 +14,10 @@ class Player
     @wins = 0
   end
 
+  def player_input
+    gets.chomp.downcase
+  end
+
   #acceptable_choices = ['rock', 'paper', 'scissors']
 
   # Prompts the user for their choice for a round
@@ -25,7 +29,7 @@ class Player
     puts "Please select one of the following:\n"
     acceptable_choices.each { |e| puts e}
     puts ""
-    player_choice = gets.chomp.downcase
+    player_choice = player_input
     player_choice = input_validity(player_choice, acceptable_choices)
   end
 
