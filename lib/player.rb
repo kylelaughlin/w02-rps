@@ -7,7 +7,7 @@ class Player
   def initialize(name:)
     @name = name
     @move  = nil
-    @wins = nil
+    @wins = 0
   end
 
   acceptable_choices = ['rock', 'paper', 'scissors']
@@ -37,6 +37,10 @@ class Player
       player_select_choice(acceptable_choices)
     end
     player_choice
+  end
+
+  def wins_round
+    @wins += 1
   end
 
 end
