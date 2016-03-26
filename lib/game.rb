@@ -21,33 +21,37 @@ class Game
       #Report the status of wins for each players progress
     #best_of = select_how_many_rounds
     #rounds = rounds_to_win
-    rounds = rounds_to_win
+    rounds = rounds_needed_to_win
     while @player_one.wins < rounds && @player_two.wins < rounds
       p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
       p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
       @rule_set.run_a_round(p1_move, p2_move)
       report_end_of_round
     end
-    #while player_one.wins < rounds && player_two.wins < rounds
-      #rule_set.run_a_round()
-    #end
 
+    report_end_of_game(rounds)
     #report the winner
 
   end
 
+  def report_end_of_game(rounds)
+    puts "\n\n#{@player_one.name} wins with #{@player_one.wins} wins!\n\n" if @player_one.wins == rounds
+    puts "\n\n#{@player_two.name} wins with #{@player_two.wins} wins!\n\n" if @player_two.wins == rounds
+  end
+
+  # Reports the current scores for each player
   #
+  # Returns nil
   def report_end_of_round
     puts "\n\nPlayer 1 has won #{@player_one.wins}\nPlayer 2 has won #{player_two.wins}"
   end
 
 
-  def
 
-  # Finds how many rounds a player needs to win to win the select
+  # Finds how many rounds a player needs to win to win the match
   #
   # Returns an integer that represents how many rounds are needed to win
-  def rounds_to_win
+  def rounds_needed_to_win
     input = get_num_of_rounds_from_user
     valid = validate_num_of_rounds_from_user(input)
     #binding.pry

@@ -31,6 +31,7 @@ class Player
     puts ""
     player_choice = player_input
     @move = input_validity(player_choice, acceptable_choices)
+
   end
 
   # Checks the validity of the players choice against the acceptable_choices array
@@ -41,6 +42,7 @@ class Player
   #
   # Returns a string representing the validated player selection
   def input_validity(player_choice, acceptable_choices)
+    binding.pry
     while !acceptable_choices.include? player_choice
       puts "\n\n'#{player_choice}' is not a valid option.\n"
       player_select_choice(acceptable_choices)
@@ -56,3 +58,4 @@ class Player
   end
 
 end
+binding.pry
