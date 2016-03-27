@@ -12,7 +12,7 @@ class Game
   # +player_one: an object representing the first player of the game
   # +player_two: an object representing the second player of the game
   #
-  # 
+  #
   def initialize(rule_set:, player_one:, player_two:)
     @rule_set = rule_set
     @player_one = player_one
@@ -29,7 +29,7 @@ class Game
       p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
       puts "\n#{player_two.name}, it's your turn"
       p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
-      @rule_set.run_a_round(p1_move, p2_move)
+      puts "\n#{@rule_set.run_a_round(p1_move, p2_move)}\n"
       report_end_of_round
     end
     #report the winner
@@ -72,7 +72,7 @@ class Game
       valid = validate_num_of_rounds_from_user(input)
     end
     #math to do how many rounds a person must win
-    calculate = calculate_rounds_to_win(input)
+    calculate_rounds_to_win(input)
   end
 
   # Gets input from the user in the form of an integer

@@ -17,7 +17,8 @@ class Player
   def input(acceptable_choices)
     puts "\nPlease make a selection:"
     acceptable_choices.each { |e| puts e}
-    input = gets.chomp.downcase
+    print ">"
+    gets.chomp.downcase
   end
 
   #acceptable_choices = ['rock', 'paper', 'scissors']

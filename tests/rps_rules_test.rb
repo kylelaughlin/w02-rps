@@ -51,4 +51,28 @@ class RPSRulesTest < Minitest::Test
     assert_equal(['rock','paper','scissors'], result)
   end
 
+  def test_run_a_round_tie
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    result = rps_rules.run_a_round('rock','rock')
+    assert_equal("This round was a tie.",result)
+  end
+
+  def test_run_a_round_player_one_wins
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    result = rps_rules.run_a_round('rock','scissors')
+    assert_equal("Kyle won this round!",result)
+  end
+
+  def test_run_a_round_player_two_wins
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    result = rps_rules.run_a_round('rock','paper')
+    assert_equal("Travis won this round!",result)
+  end
+
 end
