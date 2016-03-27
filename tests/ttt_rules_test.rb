@@ -84,12 +84,23 @@ class TTTRulesTest < Minitest::Test
     result = rule_set.valid?(0)
     refute(result, "0 Should not an invalid tic-tac-toe selection")
   end
-=begin
+
+  def test_determine_winner_player_one_wins
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    assert_equal(0,player1.wins)
+    rule_set.player_wins(player1)
+    assert_equal(1,player1.wins)
+  end
+
   def test_check_for_wins_across_win
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
-    rule_set.board
+    rule_set.board = [[1,2,3],["X","X","X"],[7,8,9]]
+    result = check_for_win(player1,"X")
+    assert(result,"Should be valid as there is a winning board")
   end
-=end
+
 end

@@ -27,6 +27,27 @@ def create_ai_player(player_position)
   end
 end
 
+puts "######   WELCOME!!!   ######"
+
+print "\n\nPlease select a game to play:\n\n1. Rock-Paper_Scissors\n2. Tic-Tac_Toe\n\n>"
+game_choice = gets.chomp.to_i
+while game_choice != 1 && game_choice != 2
+  puts "That is not a valid input. Select option 1 or 2."
+  game_choice = gets.chomp.to_i
+end
+if game_choice == 1
+  puts "\n\nROCK-PAPER-Scissors"
+elsif game_choice == 2
+  puts "\n\nTIC-TAC-TOE"
+else
+  puts "Something weird happened in the game type selection"
+end
+
+
+
+
+
+
 # out put title to the console
 puts "\n\nWELCOME TO ROCK PAPER SCISSORS!\n\n"
 
@@ -58,7 +79,13 @@ end
 puts "\n------------------------------"
 
 # Establish the rule object - - later have selection for the type of game
-rule_set = RPSRules.new(player_one: player_one, player_two: player_two)
+if game_choice == 1
+  rule_set = RPSRules.new(player_one: player_one, player_two: player_two)
+elsif game_choice == 2
+  rule_set = TTTRules.new(player_one: player_one, player_two: player_two)
+else
+  puts "Something weird happened when initiating rule_set"
+end
 
 # Create a game - - for now default is rps
 game = Game.new(rule_set: rule_set, player_one: player_one, player_two: player_two)

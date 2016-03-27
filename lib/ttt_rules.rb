@@ -3,8 +3,8 @@ require_relative 'player.rb'
 
 class TTTRules
 
-  attr_reader :acceptable_choices, :board
-  attr_accessor :player_one, :player_two
+  attr_reader :acceptable_choices
+  attr_accessor :player_one, :player_two, :board
 
   def initialize(player_one:, player_two:)
     @player_one = player_one
@@ -86,11 +86,13 @@ class TTTRules
           @board[0][0] == symbol && @board[1][1] == symbol && @board[2][2] == symbol ||
           @board[2][0] == symbol && @board[1][1] == symbol && @board[0][2] == symbol
     player_wins(player) if win
+    win
   end
 
   def player_wins(player)
     player.wins_round
     puts "\n#{player.name} won the round!\n"
+  end
 end
 
 binding.pry
