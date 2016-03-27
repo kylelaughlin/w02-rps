@@ -55,4 +55,6 @@ class TTTRulesTest < Minitest::Test
                     'Bottom Center','Bottom Right'], result)
   end
 
+  
+
 end

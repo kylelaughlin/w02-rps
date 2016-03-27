@@ -27,6 +27,7 @@ class Game
     while @player_one.wins < rounds && @player_two.wins < rounds
       puts "\n#{player_one.name}, it's your turn."
       p1_move = player_one.select_choice(@rule_set)
+    
       puts "\n#{player_two.name}, it's your turn"
       p2_move = player_two.select_choice(@rule_set)
       puts "\n#{@rule_set.run_a_round(p1_move, p2_move)}\n"
