@@ -79,7 +79,7 @@ class Game
   #
   # Returns an integer representing the users input
   def get_num_of_rounds_from_user
-    puts "\nTo the best of how many rounds do you want to play?"
+    print "\nTo the best of how many rounds do you want to play?\n>"
     gets.chomp.to_i
   end
 
