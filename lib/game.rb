@@ -42,10 +42,11 @@ class Game
   #
   # Returns nil
   def report_end_of_game(rounds)
-    puts "\n\n########################"
+    puts "\n\n##############################"
+    puts "MATCH RESULTS".center(30)
     puts "\n#{@player_one.name} wins the match with #{@player_one.wins} win(s)!\n\n" if @player_one.wins == rounds
     puts "\n#{@player_two.name} wins the match with #{@player_two.wins} win(s)!\n\n" if @player_two.wins == rounds
-    puts "########################"
+    puts "##############################"
   end
 
   # Reports the current scores for each player
@@ -53,6 +54,7 @@ class Game
   # Returns nil
   def report_end_of_round
     puts "\n------------------------------"
+    puts "ROUND RESULTS".center(30)
     puts "\n\n#{@player_one.name} has won #{@player_one.wins}\n#{@player_two.name} has won #{player_two.wins}"
     puts "\n\n------------------------------"
   end

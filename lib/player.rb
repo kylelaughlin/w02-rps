@@ -33,7 +33,7 @@ class Player
     choice = input(acceptable_choices)
     validity = valid?(choice, acceptable_choices)
     while !validity do
-      puts "\n#{choice} is an invalid selection."
+      puts "\n'#{choice}' is an invalid selection."
       choice = input(acceptable_choices)
       validity = valid?(choice, acceptable_choices)
     end
