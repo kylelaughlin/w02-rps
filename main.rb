@@ -4,11 +4,19 @@ require_relative './lib/game.rb'
 require_relative './lib/rps_rules.rb'
 require_relative './lib/ai_player.rb'
 
+# Creates a user player object
+#
+# returns the new player object
 def create_player
   name = gets.chomp
   player = Player.new(name: name)
 end
 
+# Creates a player one, player two or both ai player objects
+#
+# +player_position: an integer representing if an ai player is player one or two
+#
+# Returns nil
 def create_ai_player(player_position)
   if player_position == 1
     player = AIPlayer.new(name: "Jack the Computer")
@@ -19,8 +27,10 @@ def create_ai_player(player_position)
   end
 end
 
+# out put title to the console
 puts "\n\nWELCOME TO ROCK PAPER SCISSORS!\n\n"
 
+# Selecting a game mode for how many user players or ai players
 print "Please select the game mode:\n1. Two Player Mode\n2. One Player vs. Computer\n3. Computer vs Computer\n>"
 mode_selection = gets.chomp.to_i
 while mode_selection != 1 && mode_selection !=2 && mode_selection != 3
@@ -47,21 +57,11 @@ else
 end
 puts "\n------------------------------"
 
-=begin
-puts"------------------------------"
-print "Please input a name for Player One: "
-player_one_name = gets.chomp
-player_one = Player.new(name: player_one_name)
-
-print "\nPlease input a name for Player Two: "
-player_two_name = gets.chomp
-player_two = Player.new(name: player_two_name)
-puts"------------------------------"
-=end
-
-#Establish the rule object - - later have selection for the type of game
+# Establish the rule object - - later have selection for the type of game
 rule_set = RPSRules.new(player_one: player_one, player_two: player_two)
-#Create a game - - for now default is rps
+
+# Create a game - - for now default is rps
 game = Game.new(rule_set: rule_set, player_one: player_one, player_two: player_two)
 
+# Start the game
 game.play
