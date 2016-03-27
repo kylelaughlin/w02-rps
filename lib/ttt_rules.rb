@@ -5,6 +5,11 @@ class TTTRules
 
   attr_accessor :player_one, :player_two, :board, :acceptable_choices
 
+  # Construct the initial state of the TTTRules object
+  #
+  # +player_one: a player object representing the first player
+  # +player_two: a player object representing the second player
+  #
   def initialize(player_one:, player_two:)
     @player_one = player_one
     @player_two = player_two
@@ -12,14 +17,23 @@ class TTTRules
     @board = [["1","2","3"],["4","5","6"],["7","8","9"]]
   end
 
+  # Resets the acceptable_choices array to start a fresh round
+  #
+  # Returns the reset acceptable_choices array
   def reset_acceptable_choices
     self.acceptable_choices = [["1","2","3"],["4","5","6"],["7","8","9"]]
+  end
+
+  # Resets the board array to start a fresh round
+  #
+  # Returns the reset board array
+  def reset_board
     self.board = [["1","2","3"],["4","5","6"],["7","8","9"]]
   end
 
   def run_a_round
     reset_acceptable_choices
-    binding.pry
+    reset_board
     while !tie_game
       #player_ones turn
       player_selection(@player_one,"X")
@@ -104,4 +118,20 @@ class TTTRules
     player.wins_round
     puts "\n#{player.name} won the round!\n"
   end
+
+  def ai_selection
+    valid_rows = []
+    valid_choices = []
+    (0..2).each do |i|
+      valid_rows << i if !@acceptable_choices[i].empty?
+    end
+    valid_rows.each do |e|
+      valid_choices << @acceptable_choices[e]
+    end
+    valid_choices.flatten.sample
+  end
+
+
 end
+
+binding.pry

@@ -128,4 +128,33 @@ class TTTRulesTest < Minitest::Test
     refute(rule_set.tie_game)
   end
 
+  def test_ai_selection
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    rule_set.acceptable_choices = [["1","2"],[],["9"]]
+    result = rule_set.ai_selection
+    assert_includes(["1","2","9"],result)
+  end
+
+  def test_reset_of_acceptable_choices
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    rule_set.acceptable_choices = [["1","2"],[],["9"]]
+    assert_equal([["1","2"],[],["9"]],rule_set.acceptable_choices)
+    rule_set.reset_acceptable_choices
+    assert_equal([["1","2","3"],["4","5","6"],["7","8","9"]],rule_set.acceptable_choices)
+  end
+
+  def test_reset_of_board
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    rule_set.board = [["X","2","X"],["4","O","O"],["X","O","9"]]
+    assert_equal([["X","2","X"],["4","O","O"],["X","O","9"]],rule_set.board)
+    rule_set.reset_board
+    assert_equal([["1","2","3"],["4","5","6"],["7","8","9"]],rule_set.board)
+  end
+
 end
