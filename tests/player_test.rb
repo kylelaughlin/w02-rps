@@ -34,19 +34,17 @@ class PlayerTest < Minitest::Test
     assert_equal(5, player.wins)
   end
 
-=begin
   def test_input_validity_passing
     player = Player.new(name: "Kyle")
-    result = player.input_validity('rock',['rock','paper','scissors'])
-    assert_equal('rock', result)
+    result = player.valid?('rock',['rock','paper','scissors'])
+    assert(result)
   end
 
   def test_input_validity_fail
     player = Player.new(name: "Kyle")
-    result = player.input_validity('hand',['rock','paper','scissors'])
-    refute_equal('hand', result)
+    result = player.valid?('hand',['rock','paper','scissors'])
+    refute(result)
   end
-=end
 
   def test_wins_a_game
     player = Player.new(name: "Kyle")

@@ -35,15 +35,19 @@ class Game
   end
 
   def report_end_of_game(rounds)
+    puts "########################"
     puts "\n\n#{@player_one.name} wins with #{@player_one.wins} wins!\n\n" if @player_one.wins == rounds
     puts "\n\n#{@player_two.name} wins with #{@player_two.wins} wins!\n\n" if @player_two.wins == rounds
+    puts "########################"
   end
 
   # Reports the current scores for each player
   #
   # Returns nil
   def report_end_of_round
-    puts "\n\nPlayer 1 has won #{@player_one.wins}\nPlayer 2 has won #{player_two.wins}"
+    puts "------------------------------"
+    puts "\n\n#{@player_one.name} has won #{@player_one.wins}\n#{@player_two.name} has won #{player_two.wins}"
+    puts "------------------------------"
   end
 
 
@@ -56,7 +60,7 @@ class Game
     valid = validate_num_of_rounds_from_user(input)
     #binding.pry
     while !valid
-      puts "Must select a positive odd number of rounds.\nSome one needs to win!"
+      puts "\nMust select a positive odd number of rounds.\nSome one needs to win!"
       input = get_num_of_rounds_from_user
       valid = validate_num_of_rounds_from_user(input)
     end
@@ -68,7 +72,7 @@ class Game
   #
   # Returns an integer representing the users input
   def get_num_of_rounds_from_user
-    puts "To the best of how many rounds do you want to play?"
+    puts "\nTo the best of how many rounds do you want to play?"
     gets.chomp.to_i
   end
 
@@ -93,4 +97,3 @@ class Game
   end
 
 end
-binding.pry

@@ -14,8 +14,10 @@ class Player
     @wins = 0
   end
 
-  def player_input
-    gets.chomp.downcase
+  def input(acceptable_choices)
+    puts "\nPlease make a selection:"
+    acceptable_choices.each { |e| puts e}
+    input = gets.chomp.downcase
   end
 
   #acceptable_choices = ['rock', 'paper', 'scissors']
@@ -26,12 +28,14 @@ class Player
   #
   # Returns a string representing the choice the player has made
   def player_select_choice(acceptable_choices)
-    puts "Please select one of the following:\n"
-    acceptable_choices.each { |e| puts e}
-    puts ""
-    player_choice = player_input
-    @move = input_validity(player_choice, acceptable_choices)
-
+    choice = input(acceptable_choices)
+    validity = valid?(choice, acceptable_choices)
+    while !validity do
+      puts "\n#{choice} is an invalid selection."
+      choice = input(acceptable_choices)
+      validity = valid?(choice, acceptable_choices)
+    end
+    @move = choice
   end
 
   # Checks the validity of the players choice against the acceptable_choices array
@@ -41,13 +45,8 @@ class Player
   # =>  to select from
   #
   # Returns a string representing the validated player selection
-  def input_validity(player_choice, acceptable_choices)
-    binding.pry
-    while !acceptable_choices.include? player_choice
-      puts "\n\n'#{player_choice}' is not a valid option.\n"
-      player_select_choice(acceptable_choices)
-    end
-    player_choice
+  def valid?(choice, acceptable_choices)
+    acceptable_choices.include? choice
   end
 
   # Increases @wins by one
@@ -58,4 +57,3 @@ class Player
   end
 
 end
-binding.pry
