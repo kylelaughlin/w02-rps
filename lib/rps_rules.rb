@@ -38,7 +38,7 @@ class RPSRules
     outcome
   end
 
-  def ai_selection(ai_player)
+  def ai_selection
     @acceptable_choices.sample
   end
 end

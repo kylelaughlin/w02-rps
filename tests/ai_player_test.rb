@@ -41,5 +41,12 @@ class AIPlayerTest < Minitest::Test
     ai_player.wins = 1
     assert_equal(1, ai_player.wins)
   end
+
+  def test_wins_round_method
+    ai_player = AIPlayer.new(name: "Computer")
+    assert_equal(0, ai_player.wins)
+    ai_player.wins_round
+    assert_equal(1, ai_player.wins)
+  end
   
 end

@@ -80,7 +80,7 @@ class RPSRulesTest < Minitest::Test
     player1 = AIPlayer.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rps_rules = RPSRules.new(player_one: player1, player_two: player2)
-    result = rps_rules.ai_selection(player1)
+    result = rps_rules.ai_selection
     assert_includes(['rock','paper','scissors'],result,"Should be valid.")
   end
 
