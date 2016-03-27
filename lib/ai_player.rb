@@ -13,4 +13,6 @@ class AIPlayer
     @wins = 0
   end
 
+  
+
 end
