@@ -53,6 +53,13 @@ class TTTRulesTest < Minitest::Test
     assert_equal([[1,2,3],[4,5,6],[7,8,9]], result)
   end
 
+  def test_board_getter
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    assert_equal([[1,2,3],[4,5,6],[7,8,9]],rule_set.board)
+  end
+
   def test_board_printing
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
@@ -77,5 +84,12 @@ class TTTRulesTest < Minitest::Test
     result = rule_set.valid?(0)
     refute(result, "0 Should not an invalid tic-tac-toe selection")
   end
-
+=begin
+  def test_check_for_wins_across_win
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    rule_set.board
+  end
+=end
 end

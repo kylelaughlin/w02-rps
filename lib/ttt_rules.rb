@@ -3,8 +3,8 @@ require_relative 'player.rb'
 
 class TTTRules
 
-  attr_reader :acceptable_choices
-  attr_accessor :player_one, :player_two, :board
+  attr_reader :acceptable_choices, :board
+  attr_accessor :player_one, :player_two
 
   def initialize(player_one:, player_two:)
     @player_one = player_one
@@ -14,14 +14,18 @@ class TTTRules
   end
 
   def run_a_round
-    #player_ones turn
-    player_selection(@player_one,"X")
-    #check for a player one win
-    break if check_for_win("X")
-    #player_twos turn
-    player_selection(@player_two,"O")
-    #check for a player two win
-    break if check_for_win("O")
+    while @acceptable_choices[0].empty? ||
+          @acceptable_choices[1].empty? ||
+          @acceptable_choices[2].empty?
+      #player_ones turn
+      player_selection(@player_one,"X")
+      #check for a player one win
+      break if check_for_win(@player_one,"X")
+      #player_twos turn
+      player_selection(@player_two,"O")
+      #check for a player two win
+      break if check_for_win(@player_two,"O")
+    end
   end
 
   def build_board
@@ -72,17 +76,21 @@ class TTTRules
     end
   end
 
-  def check_for_win(symbol)
-    @board[0] == [symbol,symbol,symbol] ||
-    @board[1] == [symbol,symbol,symbol] ||
-    @board[2] == [symbol,symbol,symbol] ||
-    @board[0][0] == symbol && @board[1][0] == symbol && @board[2][0] == symbol ||
-    @board[0][1] == symbol && @board[1][1] == symbol && @board[2][1] == symbol ||
-    @board[0][2] == symbol && @board[1][2] == symbol && @board[2][2] == symbol ||
-    @board[0][0] == symbol && @board[1][1] == symbol && @board[2][2] == symbol ||
-    @board[2][0] == symbol && @board[1][1] == symbol && @board[0][2] == symbol
+  def check_for_win(player, symbol)
+    win = @board[0] == [symbol,symbol,symbol] ||
+          @board[1] == [symbol,symbol,symbol] ||
+          @board[2] == [symbol,symbol,symbol] ||
+          @board[0][0] == symbol && @board[1][0] == symbol && @board[2][0] == symbol ||
+          @board[0][1] == symbol && @board[1][1] == symbol && @board[2][1] == symbol ||
+          @board[0][2] == symbol && @board[1][2] == symbol && @board[2][2] == symbol ||
+          @board[0][0] == symbol && @board[1][1] == symbol && @board[2][2] == symbol ||
+          @board[2][0] == symbol && @board[1][1] == symbol && @board[0][2] == symbol
+    player_wins(player) if win
   end
 
+  def player_wins(player)
+    player.wins_round
+    puts "\n#{player.name} won the round!\n"
 end
 
 binding.pry
