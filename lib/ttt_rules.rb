@@ -176,5 +176,4 @@ class TTTRules
     valid_choices.flatten.sample
   end
 
-
 end

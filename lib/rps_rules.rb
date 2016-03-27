@@ -6,6 +6,11 @@ class RPSRules
   attr_reader :acceptable_choices
   attr_accessor :player_one, :player_two
 
+  # Construct the initial state of the RPSRules class
+  #
+  # +player_one: a Player object
+  # +player_two: a Player object
+  #
   def initialize(player_one:, player_two:)
     @player_one = player_one
     @player_two = player_two
