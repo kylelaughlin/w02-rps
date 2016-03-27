@@ -1,6 +1,7 @@
 require_relative 'test_helper.rb'
 require_relative '../lib/rps_rules.rb'
 require_relative '../lib/player.rb'
+require_relative '../lib/ai_player.rb'
 
 class RPSRulesTest < Minitest::Test
 
@@ -73,6 +74,14 @@ class RPSRulesTest < Minitest::Test
     rps_rules = RPSRules.new(player_one: player1, player_two: player2)
     result = rps_rules.run_a_round('rock','paper')
     assert_equal("Travis won this round!",result)
+  end
+
+  def test_ai_selection
+    player1 = AIPlayer.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    result = rps_rules.ai_selection(player1)
+    assert_includes(['rock','paper','scissors'],result,"Should be valid.")
   end
 
 end

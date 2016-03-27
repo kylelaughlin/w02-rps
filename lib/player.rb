@@ -58,3 +58,4 @@ class Player
   end
 
 end
+binding.pry

@@ -22,3 +22,5 @@ rule_set = RPSRules.new(player_one: player_one, player_two: player_two)
 game = Game.new(rule_set: rule_set, player_one: player_one, player_two: player_two)
 
 game.play
+
+binding.pry

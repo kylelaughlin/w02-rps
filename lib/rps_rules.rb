@@ -1,5 +1,6 @@
 require 'pry'
 require_relative 'player.rb'
+require_relative 'ai_player.rb'
 
 class RPSRules
 
@@ -37,4 +38,7 @@ class RPSRules
     outcome
   end
 
+  def ai_selection(ai_player)
+    @acceptable_choices.sample
+  end
 end
