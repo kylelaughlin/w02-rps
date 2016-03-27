@@ -43,8 +43,8 @@ class Game
   # Returns nil
   def report_end_of_game(rounds)
     puts "\n\n########################"
-    puts "\n#{@player_one.name} wins with #{@player_one.wins} win(s)!\n\n" if @player_one.wins == rounds
-    puts "\n#{@player_two.name} wins with #{@player_two.wins} win(s)!\n\n" if @player_two.wins == rounds
+    puts "\n#{@player_one.name} wins the match with #{@player_one.wins} win(s)!\n\n" if @player_one.wins == rounds
+    puts "\n#{@player_two.name} wins the match with #{@player_two.wins} win(s)!\n\n" if @player_two.wins == rounds
     puts "########################"
   end
 

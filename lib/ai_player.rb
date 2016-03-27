@@ -16,7 +16,7 @@ class AIPlayer
 
   def select_choice(rule_set)
     @move = rule_set.ai_selection
-    puts "\n#{@name} selects: #{@move}"
+    puts ">#{@move}"
     @move
   end
 
