@@ -37,7 +37,9 @@ class RPSRules
     outcome
   end
 
-
+  # Runs one round of rock-paper-scissors
+  #
+  # Returns nil
   def run_a_round
     # Sets player one's choice
     player_one_selection = select_player_choice(@player_one)
@@ -47,6 +49,11 @@ class RPSRules
     puts determine_winner(player_one_selection, player_two_selection)
   end
 
+  # Prompts player for their selection and delegates the choice to the player class
+  #
+  # +player: a player object for which it is their turn
+  #
+  # Returns a string represnting the players selected move
   def select_player_choice (player)
     puts "\n#{player.name}, it's your turn."
     player.select_choice(self)
@@ -60,5 +67,3 @@ class RPSRules
   end
 
 end
-
-binding.pry
