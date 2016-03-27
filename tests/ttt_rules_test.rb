@@ -50,11 +50,16 @@ class TTTRulesTest < Minitest::Test
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
     result = rule_set.acceptable_choices
-    assert_equal([ 'Top Left','Top Center','Top Right','Middle Left',
-                    'Middle Center','Middle Right','Bottom Left',
-                    'Bottom Center','Bottom Right'], result)
+    assert_equal([[1,2,3],[4,5,6],[7,8,9]], result)
   end
 
+  def test_board_printing
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    result = rule_set.print_board
+    string = " 1 | 2 | 3\n-----------\n 4 | 5 | 6\n-----------\n 7 | 8 | 9 \n"
+    assert_equal(string, result)
+  end
   
-
 end

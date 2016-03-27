@@ -55,7 +55,7 @@ class AIPlayerTest < Minitest::Test
     ai_player1 = AIPlayer.new(name: "Computer1")
     ai_player2 = AIPlayer.new(name: "Computer2")
     rules = RPSRules.new(player_one: ai_player1, player_two: ai_player2)
-    game = Game.new(rule_set: rules, player_one: ai_player1, player_two: ai_player2)
+    #game = Game.new(rule_set: rules, player_one: ai_player1, player_two: ai_player2)
     assert_nil(ai_player1.move)
     ai_player1.select_choice(rules)
     assert_includes(['rock','paper','scissors'],ai_player1.move)
