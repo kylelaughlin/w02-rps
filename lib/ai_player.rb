@@ -14,9 +14,10 @@ class AIPlayer
     @wins = 0
   end
 
-  def select_choice(acceptable_choices)
-
+  def select_choice(rule_set)
+    @move = rule_set.ai_selection
   end
 
+  
 
 end
