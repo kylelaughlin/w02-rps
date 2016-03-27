@@ -3,29 +3,40 @@ require_relative 'player.rb'
 
 class TTTRules
 
-  attr_reader :acceptable_choices
-  attr_accessor :player_one, :player_two, :board
+  attr_accessor :player_one, :player_two, :board, :acceptable_choices
 
   def initialize(player_one:, player_two:)
     @player_one = player_one
     @player_two = player_two
-    @acceptable_choices = [[1,2,3],[4,5,6],[7,8,9]]
-    @board = [[1,2,3],[4,5,6],[7,8,9]]
+    @acceptable_choices = [["1","2","3"],["4","5","6"],["7","8","9"]]
+    @board = [["1","2","3"],["4","5","6"],["7","8","9"]]
+  end
+
+  def reset_acceptable_choices
+    self.acceptable_choices = [["1","2","3"],["4","5","6"],["7","8","9"]]
+    self.board = [["1","2","3"],["4","5","6"],["7","8","9"]]
   end
 
   def run_a_round
-    while @acceptable_choices[0].empty? ||
-          @acceptable_choices[1].empty? ||
-          @acceptable_choices[2].empty?
+    reset_acceptable_choices
+    binding.pry
+    while !tie_game
       #player_ones turn
       player_selection(@player_one,"X")
       #check for a player one win
       break if check_for_win(@player_one,"X")
+      break if tie_game
       #player_twos turn
       player_selection(@player_two,"O")
       #check for a player two win
       break if check_for_win(@player_two,"O")
     end
+  end
+
+  def tie_game
+    @acceptable_choices[0].empty? &&
+    @acceptable_choices[1].empty? &&
+    @acceptable_choices[2].empty?
   end
 
   def build_board
@@ -37,7 +48,7 @@ class TTTRules
   end
 
   def player_selection(player, symbol)
-    puts "#{player.name}, it's your turn\n"
+    puts "#{player.name}, it's your turn\n\n"
     puts build_board
     choice = player.select_choice(self)
     #remove from acceptable_choices
@@ -47,9 +58,9 @@ class TTTRules
   end
 
   def valid?(choice)
-    acceptable_choices[0].include?(choice) ||
-    acceptable_choices[1].include?(choice) ||
-    acceptable_choices[2].include?(choice)
+    @acceptable_choices[0].include?(choice) ||
+    @acceptable_choices[1].include?(choice) ||
+    @acceptable_choices[2].include?(choice)
   end
 
   def remove_played_space_from_acceptable_choices(choice)
@@ -94,5 +105,3 @@ class TTTRules
     puts "\n#{player.name} won the round!\n"
   end
 end
-
-binding.pry

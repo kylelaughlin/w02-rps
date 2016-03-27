@@ -50,14 +50,23 @@ class TTTRulesTest < Minitest::Test
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
     result = rule_set.acceptable_choices
-    assert_equal([[1,2,3],[4,5,6],[7,8,9]], result)
+    assert_equal([["1","2","3"],["4","5","6"],["7","8","9"]], result)
   end
 
   def test_board_getter
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
-    assert_equal([[1,2,3],[4,5,6],[7,8,9]],rule_set.board)
+    assert_equal([["1","2","3"],["4","5","6"],["7","8","9"]],rule_set.board)
+  end
+
+  def test_board_setter
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    assert_equal([["1","2","3"],["4","5","6"],["7","8","9"]],rule_set.board)
+    rule_set.board = [["1","2","3"],["X","X","X"],["7","8","9"]]
+    assert_equal([["1","2","3"],["X","X","X"],["7","8","9"]],rule_set.board)
   end
 
   def test_board_printing
@@ -73,7 +82,7 @@ class TTTRulesTest < Minitest::Test
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
-    result = rule_set.valid?(4)
+    result = rule_set.valid?("4")
     assert(result, "Should be a valid tic-tac-toe selection")
   end
 
@@ -99,8 +108,24 @@ class TTTRulesTest < Minitest::Test
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
     rule_set.board = [[1,2,3],["X","X","X"],[7,8,9]]
-    result = check_for_win(player1,"X")
+    result = rule_set.check_for_win(player1,"X")
     assert(result,"Should be valid as there is a winning board")
+  end
+
+  def test_tie_game_true
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    rule_set.acceptable_choices = [[],[],[]]
+    assert(rule_set.tie_game)
+  end
+
+  def test_tie_game_false
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    rule_set.acceptable_choices = [[],[5],[]]
+    refute(rule_set.tie_game)
   end
 
 end

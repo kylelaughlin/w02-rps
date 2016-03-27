@@ -3,6 +3,7 @@ require_relative './lib/player.rb'
 require_relative './lib/game.rb'
 require_relative './lib/rps_rules.rb'
 require_relative './lib/ai_player.rb'
+require_relative './lib/ttt_rules.rb'
 
 # Creates a user player object
 #

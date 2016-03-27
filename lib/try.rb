@@ -1,14 +1,11 @@
+require 'pry'
+require_relative 'player.rb'
+require_relative 'ttt_rules.rb'
 
+player1 = Player.new(name:"Kyle")
+player2 = Player.new(name:"Andrea")
 
+rule_set = TTTRules.new(player_one: player1, player_two:player2)
 
-acceptable_choices = [[1,2,3],[4,5,6],[7,8,6]]
-
-def print_board(acceptable_choices)
-  board = " #{acceptable_choices[0][0]} | #{acceptable_choices[0][1]} | #{acceptable_choices[0][2]}"
-  board += "\n-----------\n"
-  board += " #{acceptable_choices[1][0]} | #{acceptable_choices[1][1]} | #{acceptable_choices[1][2]}"
-  board += "\n-----------\n"
-  board += " #{acceptable_choices[2][0]} | #{acceptable_choices[2][1]} | #{acceptable_choices[2][2]} \n"
-end
-
-puts print_board(acceptable_choices)
+binding.pry
+rule_set.run_a_round
