@@ -31,6 +31,9 @@ class TTTRules
     self.board = [["1","2","3"],["4","5","6"],["7","8","9"]]
   end
 
+  # Runs one round of tic-tac-toe resulting in a winner or a tie
+  #
+  # Returns nil
   def run_a_round
     reset_acceptable_choices
     reset_board
@@ -47,12 +50,18 @@ class TTTRules
     end
   end
 
+  # Checks if there are any more available moves- indicates a tie game
+  #
+  # Returns true if there are no more moves, otherwise false
   def tie_game
     @acceptable_choices[0].empty? &&
     @acceptable_choices[1].empty? &&
     @acceptable_choices[2].empty?
   end
 
+  # Creates a string that represents a graphical representation of the build_board
+  #
+  # Returns the created string representing the tic-tac-toe board
   def build_board
     board = " #{@board[0][0]} | #{@board[0][1]} | #{@board[0][2]}"
     board += "\n-----------\n"
@@ -61,6 +70,12 @@ class TTTRules
     board += " #{@board[2][0]} | #{@board[2][1]} | #{@board[2][2]} \n"
   end
 
+  # Prompts the user for their selection, showing them the board
+  #
+  # +player: represents the player object whose turn it is
+  # +symbol: a string representing an "X" or an "O" to play on the board
+  #
+  # Returns nil
   def player_selection(player, symbol)
     puts "#{player.name}, it's your turn\n\n"
     puts build_board
@@ -71,12 +86,22 @@ class TTTRules
     update_board(choice, symbol)
   end
 
+  # Checks to see if a users selected move is a valid space to play
+  #
+  # +choice: a string representing the space the user has selected to play
+  #
+  # Returns true if the users choice is a valid move, otherwise false
   def valid?(choice)
     @acceptable_choices[0].include?(choice) ||
     @acceptable_choices[1].include?(choice) ||
     @acceptable_choices[2].include?(choice)
   end
 
+  # Removes a space from acceptable_choices once a player plays that space
+  #
+  # +choice: a string representing the space the user has selected to play
+  #
+  # Returns nil
   def remove_played_space_from_acceptable_choices(choice)
     if @acceptable_choices[0].include? choice
       @acceptable_choices[0].delete(choice)
@@ -89,6 +114,12 @@ class TTTRules
     end
   end
 
+  # Changes out a board spaces numerical place holder with the players symbol X or O
+  #
+  # +choice: a string representing the space the user has selected to play
+  # +symbol: a string representing an "X" or an "O" to play on the board
+  #
+  # Returns nil
   def update_board(choice, symbol)
     if @board[0].include? choice
       @board[0].map! {|e| e == choice ? symbol : e}
@@ -101,6 +132,12 @@ class TTTRules
     end
   end
 
+  # Checks all possible ways inwhich a player may win with three in a row
+  #
+  # +player: represents the player object whose turn it is
+  # +symbol: a string representing an "X" or an "O" to play on the board
+  #
+  # Returns true if a player has won, otherwise false
   def check_for_win(player, symbol)
     win = @board[0] == [symbol,symbol,symbol] ||
           @board[1] == [symbol,symbol,symbol] ||
@@ -114,11 +151,19 @@ class TTTRules
     win
   end
 
+  # Calls the player.wins_round method and puts to console
+  #
+  # +player: represents the player object whose turn it is
+  #
+  # Returns nil
   def player_wins(player)
     player.wins_round
     puts "\n#{player.name} won the round!\n"
   end
 
+  # Picks a random space for the AI player's move
+  #
+  # Returns a string representing the numerical place holder for an available space
   def ai_selection
     valid_rows = []
     valid_choices = []
@@ -133,5 +178,3 @@ class TTTRules
 
 
 end
-
-binding.pry
