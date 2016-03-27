@@ -25,15 +25,21 @@ class Game
   def play
     rounds = rounds_needed_to_win
     while @player_one.wins < rounds && @player_two.wins < rounds
+      @rule_set.run_a_round
+      report_end_of_round
+    end
+=begin
       puts "\n#{player_one.name}, it's your turn."
       p1_move = player_one.select_choice(@rule_set)
-    
+
       puts "\n#{player_two.name}, it's your turn"
       p2_move = player_two.select_choice(@rule_set)
       puts "\n#{@rule_set.run_a_round(p1_move, p2_move)}\n"
       report_end_of_round
     end
+=end
     #report the winner
+
     report_end_of_game(rounds)
   end
 

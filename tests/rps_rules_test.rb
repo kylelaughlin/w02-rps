@@ -52,29 +52,29 @@ class RPSRulesTest < Minitest::Test
     assert_equal(['rock','paper','scissors'], result)
   end
 
-  def test_run_a_round_tie
+  def test_determine_winner_tie
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     player1.move = 'rock'
     rps_rules = RPSRules.new(player_one: player1, player_two: player2)
-    result = rps_rules.run_a_round('rock','rock')
-    assert_equal("This round was a tie. You both chose '#{player1.move}'",result)
+    result = rps_rules.determine_winner('rock','rock')
+    assert_equal("\nThis round was a tie. You both chose '#{player1.move}'",result)
   end
 
-  def test_run_a_round_player_one_wins
+  def test_determine_winner_player_one_wins
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rps_rules = RPSRules.new(player_one: player1, player_two: player2)
-    result = rps_rules.run_a_round('rock','scissors')
-    assert_equal("Kyle won this round!",result)
+    result = rps_rules.determine_winner('rock','scissors')
+    assert_equal("\nKyle won this round!",result)
   end
 
-  def test_run_a_round_player_two_wins
+  def test_determine_winner_player_two_wins
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rps_rules = RPSRules.new(player_one: player1, player_two: player2)
-    result = rps_rules.run_a_round('rock','paper')
-    assert_equal("Travis won this round!",result)
+    result = rps_rules.determine_winner('rock','paper')
+    assert_equal("\nTravis won this round!",result)
   end
 
   def test_ai_selection
