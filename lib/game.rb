@@ -6,38 +6,45 @@ class Game
 
   attr_accessor :rule_set, :player_one, :player_two
 
+  # Constructs the initial state of a game object
+  #
+  # +rule_set: an object representing the rules of the game to be played
+  # +player_one: an object representing the first player of the game
+  # +player_two: an object representing the second player of the game
+  #
+  # 
   def initialize(rule_set:, player_one:, player_two:)
     @rule_set = rule_set
     @player_one = player_one
     @player_two = player_two
   end
 
-  #facilitate playing a game
+  # Runs the game through as many rounds as selected by the user
+  #
+  # Returns nil
   def play
-    #Select number of players - - This may not be needed until I add in AI- assume two player for now
-
-    #select how many rounds
-      #loop the calls of the rules until a player has enough wins to break the loop
-      #Report the status of wins for each players progress
-    #best_of = select_how_many_rounds
-    #rounds = rounds_to_win
     rounds = rounds_needed_to_win
     while @player_one.wins < rounds && @player_two.wins < rounds
+      puts "\n#{player_one.name}, it's your turn."
       p1_move = player_one.player_select_choice(@rule_set.acceptable_choices)
+      puts "\n#{player_two.name}, it's your turn"
       p2_move = player_two.player_select_choice(@rule_set.acceptable_choices)
       @rule_set.run_a_round(p1_move, p2_move)
       report_end_of_round
     end
-
-    report_end_of_game(rounds)
     #report the winner
-
+    report_end_of_game(rounds)
   end
 
+  # Reports the number of rounds won by each player
+  #
+  # +rounds: an integer representing the number of rounds needed to win the match
+  #
+  # Returns nil
   def report_end_of_game(rounds)
-    puts "########################"
-    puts "\n#{@player_one.name} wins with #{@player_one.wins} wins!\n\n" if @player_one.wins == rounds
-    puts "\n#{@player_two.name} wins with #{@player_two.wins} wins!\n\n" if @player_two.wins == rounds
+    puts "\n\n########################"
+    puts "\n#{@player_one.name} wins with #{@player_one.wins} win(s)!\n\n" if @player_one.wins == rounds
+    puts "\n#{@player_two.name} wins with #{@player_two.wins} win(s)!\n\n" if @player_two.wins == rounds
     puts "########################"
   end
 
