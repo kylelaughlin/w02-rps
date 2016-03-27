@@ -106,3 +106,5 @@ while ["y","yes"].include? continue
     continue = gets.chomp.downcase
   end
 end
+
+puts "\nThanks for playing!\n\n\n"
