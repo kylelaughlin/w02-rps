@@ -55,7 +55,8 @@ class RPSRules
   #
   # Returns a string represnting the players selected move
   def select_player_choice (player)
-    puts "\n#{player.name}, it's your turn."
+    puts "\n#{player.name}, it's your turn.\n\nHere are your options:\n"
+    @acceptable_choices.each { |e| puts e}
     player.select_choice(self)
   end
 

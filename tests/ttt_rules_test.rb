@@ -57,9 +57,25 @@ class TTTRulesTest < Minitest::Test
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
     rule_set = TTTRules.new(player_one: player1, player_two: player2)
-    result = rule_set.print_board
+    result = rule_set.build_board
     string = " 1 | 2 | 3\n-----------\n 4 | 5 | 6\n-----------\n 7 | 8 | 9 \n"
     assert_equal(string, result)
   end
-  
+
+  def test_valid_choice_passing
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    result = rule_set.valid?(4)
+    assert(result, "Should be a valid tic-tac-toe selection")
+  end
+
+  def test_valid_choice_failing
+    player1 = Player.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rule_set = TTTRules.new(player_one: player1, player_two: player2)
+    result = rule_set.valid?(0)
+    refute(result, "0 Should not an invalid tic-tac-toe selection")
+  end
+
 end
