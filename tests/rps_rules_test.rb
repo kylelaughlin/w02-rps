@@ -85,4 +85,20 @@ class RPSRulesTest < Minitest::Test
     assert_includes(['rock','paper','scissors'],result,"Should be valid.")
   end
 
+  def test_valid_choice_passing
+    player1 = AIPlayer.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    result = rps_rules.valid?('rock')
+    assert(result)
+  end
+
+  def test_valid_choice_failing
+    player1 = AIPlayer.new(name: "Kyle")
+    player2 = Player.new(name: "Travis")
+    rps_rules = RPSRules.new(player_one: player1, player_two: player2)
+    result = rps_rules.valid?('hand')
+    refute(result)
+  end
+
 end

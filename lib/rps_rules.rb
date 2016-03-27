@@ -66,4 +66,13 @@ class RPSRules
     @acceptable_choices.sample
   end
 
+  # Checks the validity of the players choice against the acceptable_choices array
+  #
+  # +choice: a string representing the input provided by the player for their turn
+  #
+  # Returns a string representing the validated player selection
+  def valid?(choice)
+    @acceptable_choices.include? choice
+  end
+
 end

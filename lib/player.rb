@@ -31,24 +31,13 @@ class Player
   def select_choice(rule_set)
     acceptable_choices = rule_set.acceptable_choices
     choice = input(acceptable_choices)
-    validity = valid?(choice, acceptable_choices)
+    validity = rule_set.valid?(choice)
     while !validity do
       puts "\n'#{choice}' is an invalid selection."
       choice = input(acceptable_choices)
-      validity = valid?(choice, acceptable_choices)
+      validity = rule_set.valid?(choice)
     end
     @move = choice
-  end
-
-  # Checks the validity of the players choice against the acceptable_choices array
-  #
-  # +player_choice: a string representing the input provided by the player for their turn
-  # +acceptable_choices: an array representing the valid options for a players
-  # =>  to select from
-  #
-  # Returns a string representing the validated player selection
-  def valid?(choice, acceptable_choices)
-    acceptable_choices.include? choice
   end
 
   # Increases @wins by one
