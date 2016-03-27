@@ -14,12 +14,20 @@ class AIPlayer
     @wins = 0
   end
 
+  # Set @move to a valid choice
+  #
+  # +rule_set: the rules object controling the rules of the game
+  #
+  # Returns the ai_player's valid move as a string
   def select_choice(rule_set)
     @move = rule_set.ai_selection
     puts ">#{@move}"
     @move
   end
 
+  # Increases @wins by one
+  #
+  # Returns the new value of @wins
   def wins_round
     @wins += 1
   end
