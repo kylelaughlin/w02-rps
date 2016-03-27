@@ -55,9 +55,10 @@ class RPSRulesTest < Minitest::Test
   def test_run_a_round_tie
     player1 = Player.new(name: "Kyle")
     player2 = Player.new(name: "Travis")
+    player1.move = 'rock'
     rps_rules = RPSRules.new(player_one: player1, player_two: player2)
     result = rps_rules.run_a_round('rock','rock')
-    assert_equal("This round was a tie.",result)
+    assert_equal("This round was a tie. You both chose '#{player1.move}'",result)
   end
 
   def test_run_a_round_player_one_wins
