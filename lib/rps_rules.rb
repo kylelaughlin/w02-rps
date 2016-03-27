@@ -1,6 +1,5 @@
 require 'pry'
-#require_relative 'player.rb'
-#require_relative 'ai_player.rb'
+
 
 class RPSRules
 
@@ -38,6 +37,9 @@ class RPSRules
     outcome
   end
 
+  # Selects an element of the acceptable_choices array at random
+  #
+  # Returns the array element (a string) that is chosen at random
   def ai_selection
     @acceptable_choices.sample
   end
