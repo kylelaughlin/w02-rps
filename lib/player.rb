@@ -28,7 +28,8 @@ class Player
   # +acceptable_choices: an array representing the allowable selections for a player to make
   #
   # Returns a string representing the choice the player has made
-  def player_select_choice(acceptable_choices)
+  def select_choice(rule_set)
+    acceptable_choices = rule_set.acceptable_choices
     choice = input(acceptable_choices)
     validity = valid?(choice, acceptable_choices)
     while !validity do

@@ -1,6 +1,6 @@
 require 'pry'
-require_relative 'player.rb'
-require_relative 'ai_player.rb'
+#require_relative 'player.rb'
+#require_relative 'ai_player.rb'
 
 class RPSRules
 

@@ -1,4 +1,5 @@
 require 'pry'
+require_relative 'rps_rules.rb'
 
 class AIPlayer
 
@@ -13,6 +14,9 @@ class AIPlayer
     @wins = 0
   end
 
-  
+  def select_choice(acceptable_choices)
+
+  end
+
 
 end
