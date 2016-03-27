@@ -67,7 +67,7 @@ class Game
     valid = validate_num_of_rounds_from_user(input)
     #binding.pry
     while !valid
-      puts "\nMust select a positive odd number of rounds.\nSome one needs to win!"
+      puts "\nMust select a positive, odd number of rounds.\nSome one needs to win!"
       input = get_num_of_rounds_from_user
       valid = validate_num_of_rounds_from_user(input)
     end

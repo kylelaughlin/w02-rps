@@ -21,7 +21,7 @@ class RPSRules
   # Returns a string representing which player wins the round according to the rps rules
   def run_a_round(player_one_selection, player_two_selection)
     if player_one_selection == player_two_selection
-      outcome = "This round was a tie."
+      outcome = "This round was a tie. You both chose '#{player_one.move}'"
     elsif player_one_selection == "rock" && player_two_selection == "scissors" ||
       player_one_selection == "paper" && player_two_selection == "rock" ||
       player_one_selection == "scissors" && player_two_selection == "paper"
