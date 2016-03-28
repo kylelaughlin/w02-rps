@@ -16,7 +16,7 @@ class Game
     @rule_set = rule_set
     @player_one = player_one
     @player_two = player_two
-  end
+  end 
 
   # Runs the game through as many rounds as selected by the user
   #
