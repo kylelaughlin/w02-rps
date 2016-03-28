@@ -28,6 +28,8 @@ class Game
       report_end_of_round
     end
     report_end_of_game(rounds)
+    @player_one.wins = 0
+    @player_two.wins = 0
   end
 
   # Reports the number of rounds won by each player
